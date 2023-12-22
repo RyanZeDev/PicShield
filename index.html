@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>图片水印打码工具</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        article {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        label {
+            color: #3498db;
+            font-size: 17px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="range"],
+        input[type="color"],
+        input[type="checkbox"],
+        button {
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        input[type="range"] {
+            height: auto;
+        }
+
+        canvas {
+            box-sizing: border-box;
+            width: 100%;
+            border: 1px dashed #AAA;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #graph {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>图片水印工具</h1>
+        <article>为你的图片添加简单的水印，安全无泄漏。<a href="https://github.com/RuiZengDev/PicShield">Github地址</a></article>
+
+        <label for="image">第一步：先选择一张本地图片</label>
+        <input type="file" id="image" autocomplete="off">
+
+        <label for="text">第二步：输入需要打水印的文字</label>
+        <input type="text" id="text" placeholder="请输入文字" autocomplete="off" maxlength="30">
+
+        <label for="color">颜色</label>
+        <input type="color" id="color" pattern="#[0-9A-Fa-f]{6}" autocomplete="off" value="#0000FF">
+
+        <label for="alpha">透明度</label>
+        <input type="range" id="alpha" min="0" max="1" step="0.05" autocomplete="off" value="0.15">
+
+        <label for="space">间隔</label>
+        <input type="range" id="space" min="1" max="8" step="0.2" autocomplete="off" value="4">
+
+        <label for="size">字号</label>
+        <input type="range" id="size" min="0.5" max="3" step="0.05" autocomplete="off" value="1">
+
+        <label for="text">第三步：点击图片下载</label>
+        <p>
+            <label for="auto-refresh">实时刷新</label>
+            <input type="checkbox" id="auto-refresh" autocomplete="off" checked>
+            <button id="refresh" disabled>刷新</button>
+        </p>
+        <p id="graph"></p>
+    </div>
+    <script src="./build/script.js"></script>
+</body>
+</html>
